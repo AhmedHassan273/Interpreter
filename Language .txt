@@ -1,0 +1,21 @@
+Program -> (Expression)*
+
+Expression -> Comparison Expression ( ('&&' | '||') Comparison Expression )*
+
+Comparison Expression -> Arithmetic Expression ( ( '>' | '<' | '==' | '!=' ) Arithmetic Expression )*
+
+Arithmetic Expression -> Term '+' Term | Term '-' Term | Term
+
+Term -> Primary '*' Primary | Primary '/' Primary | Primary '%' Primary | Primary
+
+Primary -> Int-literal
+	-> String-literal
+	-> Variable-name
+	-> Variable-name '=' Expression
+	-> 'if' '(' Expression ')' '{' (Expression)* '}' 'else'? '{' (Expression)* '}'
+	-> 'while' '(' Expression ')' '{' (Expression)* '}' 
+	-> 'write' '(' Expression & (Expression)* ')'
+
+
+// * means may be repeated one or more times
+// ? means may or maynot exist
